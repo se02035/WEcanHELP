@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoConverter", "VideoConv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{159E3B6A-57F8-42E7-AACB-0FFBBA809CFC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeCanHelpOfficeAppWeb", "WeCanHelpOfficeAppWeb\WeCanHelpOfficeAppWeb.csproj", "{A8F8D8D6-7B5B-4BCD-9432-D4144935CA02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeCanHelpOfficeApp", "WeCanHelpOfficeApp\WeCanHelpOfficeApp.csproj", "{E8ABEB17-77D8-4CEB-8A22-9F4C871B8959}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,16 @@ Global
 		{159E3B6A-57F8-42E7-AACB-0FFBBA809CFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{159E3B6A-57F8-42E7-AACB-0FFBBA809CFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{159E3B6A-57F8-42E7-AACB-0FFBBA809CFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8F8D8D6-7B5B-4BCD-9432-D4144935CA02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8F8D8D6-7B5B-4BCD-9432-D4144935CA02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8F8D8D6-7B5B-4BCD-9432-D4144935CA02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8F8D8D6-7B5B-4BCD-9432-D4144935CA02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8ABEB17-77D8-4CEB-8A22-9F4C871B8959}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8ABEB17-77D8-4CEB-8A22-9F4C871B8959}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8ABEB17-77D8-4CEB-8A22-9F4C871B8959}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E8ABEB17-77D8-4CEB-8A22-9F4C871B8959}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8ABEB17-77D8-4CEB-8A22-9F4C871B8959}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8ABEB17-77D8-4CEB-8A22-9F4C871B8959}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
