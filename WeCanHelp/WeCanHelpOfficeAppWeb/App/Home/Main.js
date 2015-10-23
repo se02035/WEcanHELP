@@ -17,6 +17,7 @@ angularApp.controller('Main', ['$scope', '$http', '$location', 'adalAuthenticati
     // optional
     $scope.$on("adal:loginSuccess", function () {
         //$scope.testMessage = "loginSuccess";
+        loadData($http, $scope);
     });
 
     // optional
@@ -25,10 +26,10 @@ angularApp.controller('Main', ['$scope', '$http', '$location', 'adalAuthenticati
         //$location.path("/login");
     });
 
-    // optional
-    $scope.$on("adal:notAuthorized", function (event, rejection, forResource) {
-        $scope.testMessage = "It is not Authorized for resource:" + forResource;
-    });
+    //// optional
+    //$scope.$on("adal:notAuthorized", function (event, rejection, forResource) {
+    //    $scope.testMessage = "It is not Authorized for resource:" + forResource;
+    //});
     
     //loadData($http, $scope);
 
