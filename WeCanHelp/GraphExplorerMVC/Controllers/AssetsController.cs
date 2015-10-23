@@ -15,6 +15,9 @@ using Microsoft.Office365.Discovery;
 using Microsoft.Office365.SharePoint.CoreServices;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure.Storage.Queue;
+using Common;
+using Newtonsoft.Json;
 
 namespace GraphExplorerMVC.Controllers
 {
@@ -161,6 +164,22 @@ namespace GraphExplorerMVC.Controllers
                 }
                 // queue a message for further processing
 
+
+                ConnectionStringSettings connectionString = ConfigurationManager.ConnectionStrings["AzureWebJobsStorage"];
+                CloudStorageAccount storageAccount2 =
+                    CloudStorageAccount.Parse(connectionString.ConnectionString);
+                CloudQueueClient queueClient = storageAccount2.CreateCloudQueueClient();
+
+                CloudQueue queue = queueClient.GetQueueReference("videoqueue");
+
+                queue.CreateIfNotExists();
+
+                VideoInformation videoInformation = new VideoInformation();
+                videoInformation.Uri = new Uri(model.Asset.RawUrl+".mp4");
+                videoInformation.Id = Guid.NewGuid();
+
+                CloudQueueMessage message = new CloudQueueMessage(JsonConvert.SerializeObject(videoInformation));
+                queue.AddMessage(message);
 
                 return RedirectToAction("Index");
             }
