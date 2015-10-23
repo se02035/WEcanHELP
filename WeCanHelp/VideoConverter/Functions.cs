@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Threading;
 using System.Threading.Tasks;
 using Common;
@@ -25,31 +26,46 @@ namespace VideoConverter
 
         public static async void ProcessQueueMessage(
             [QueueTrigger("videoqueue")] VideoInformation videoInfo,
-            [Blob("videos/{Name}", FileAccess.Read)] Stream input)
+            [Blob("asset-9320445d-1500-80c4-b779-f1e5791e1257/{Name}", FileAccess.Read)] Stream input)
         {
             CloudMediaContext context = new CloudMediaContext(MediaServicesCredentials.Value);
 
-            string mediaId = await UploadVideo(context, videoInfo.Name, videoInfo.Uri.ToString());
+            string file = CopyFileLocaly(input, videoInfo.Name);
 
-            IJob job = await CreateMediaEncodeJob(context, mediaId);
+            //string mediaId = await UploadVideo(context, videoInfo.Name, videoInfo.Uri.ToString());
+            IAsset mediaAsset = await UploadVideo(context, Path.GetFileName(file), file);
+
+            IJob job = await CreateMediaEncodeJob(context, mediaAsset);
             await job.GetExecutionProgressTask(CancellationToken.None);
         }
 
-        private static async Task<IJob> CreateMediaEncodeJob(CloudMediaContext context, string assetId)
+        private static string CopyFileLocaly(Stream input, string name)
         {
-            string encodingPreset = "H264 Broadband 720p";
-            IAsset assetToEncode = context.Assets.FirstOrDefault(a => a.Id == assetId);
-            if (assetToEncode == null)
-            {
-                throw new ArgumentException("Could not find assetId: " + assetId);
-            }
+            //string filaPath = Path.GetTempFileName();
+            string filaPath = Path.Combine(Path.GetTempPath(), name);
+            //input.CopyTo(File.Open(filaPath, FileMode.Append, FileAccess.Write, FileShare.Read));
+            input.CopyTo(File.Open(filaPath, FileMode.Create, FileAccess.Write, FileShare.Read));
+            return filaPath;
+        }
+
+        private static async Task<IJob> CreateMediaEncodeJob(CloudMediaContext context, IAsset assetToEncode)
+        {
+            //string encodingPreset = "H264 Broadband 720p";
+            string encodingPreset = "H264 Smooth Streaming 720p";
 
             IJob job = context.Jobs.Create("Encoding " + assetToEncode.Name + " to " + encodingPreset);
 
+            string[] y = context.MediaProcessors.Where(mp => mp.Name.Equals("Azure Media Encoder")).ToArray().Select(mp=>mp.Version).ToArray();
+
             IMediaProcessor latestWameMediaProcessor =
-                (from p in context.MediaProcessors where p.Name == "Azure Media Encoder" select p).ToList()
-                    .OrderBy(wame => new Version(wame.Version))
-                    .LastOrDefault();
+                context.MediaProcessors.Where(mp => mp.Name.Equals("Azure Media Encoder"))
+                    .ToArray()
+                    .OrderByDescending(
+                        mp =>
+                            new Version(int.Parse(mp.Version.Split('.', ',')[0]),
+                                int.Parse(mp.Version.Split('.', ',')[1])))
+                    .First();
+
             ITask encodeTask = job.Tasks.AddNew("Encoding", latestWameMediaProcessor, encodingPreset, TaskOptions.None);
             encodeTask.InputAssets.Add(assetToEncode);
             encodeTask.OutputAssets.AddNew(assetToEncode.Name + " as " + encodingPreset, AssetCreationOptions.None);
@@ -59,7 +75,7 @@ namespace VideoConverter
             return await job.SubmitAsync();
         }
 
-        public static async Task<string> UploadVideo(CloudMediaContext context, string name, string address)
+        public static async Task<IAsset> UploadVideo(CloudMediaContext context, string name, string address)
         {
             IAsset uploadAsset =
                 await
@@ -80,7 +96,7 @@ namespace VideoConverter
             locator.Delete();
             accessPolicy.Delete();
 
-            return uploadAsset.Id;
+            return uploadAsset;
         }
     }
 }
