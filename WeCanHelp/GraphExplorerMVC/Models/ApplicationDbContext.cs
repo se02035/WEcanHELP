@@ -15,6 +15,8 @@ namespace GraphExplorerMVC.Models
         }
 
         public DbSet<UserTokenCache> UserTokenCacheList { get; set; }
+        public DbSet<Asset> Assets { get; set; }
+        public DbSet<Application> Applications { get; set; }
     }
 
     public class UserTokenCache

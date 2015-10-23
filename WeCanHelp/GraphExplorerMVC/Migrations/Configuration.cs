@@ -1,3 +1,5 @@
+using GraphExplorerMVC.Models;
+
 namespace GraphExplorerMVC.Migrations
 {
     using System;
@@ -26,6 +28,13 @@ namespace GraphExplorerMVC.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            context.Applications.AddOrUpdate(new Application[]
+            {
+                    new Application() { Name = "Excel" },
+                    new Application() {Name = "Word" },
+                    new Application() {Name = "PowerPoint" }
+            }
+);
         }
     }
 }
