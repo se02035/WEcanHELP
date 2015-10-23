@@ -236,9 +236,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201510231541081_Initial.cs" />
-    <Compile Include="Migrations\201510231541081_Initial.Designer.cs">
-      <DependentUpon>201510231541081_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201510232035206_Initial.cs" />
+    <Compile Include="Migrations\201510232035206_Initial.Designer.cs">
+      <DependentUpon>201510232035206_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdalTokenCache.cs" />
@@ -265,6 +265,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\wecanhelphack %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\wecanhelphack %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\wecanhelphack %284%29.pubxml" />
     <None Include="Properties\PublishProfiles\wecanhelphack.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -321,8 +322,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201510231541081_Initial.resx">
-      <DependentUpon>201510231541081_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201510232035206_Initial.resx">
+      <DependentUpon>201510232035206_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
