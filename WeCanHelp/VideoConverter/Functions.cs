@@ -26,11 +26,14 @@ namespace VideoConverter
 
         public static async void ProcessQueueMessage(
             [QueueTrigger("videoqueue")] VideoInformation videoInfo,
-            [Blob("asset-9320445d-1500-80c4-b779-f1e5791e1257/{Name}", FileAccess.Read)] Stream input)
+            //[Blob("asset-9320445d-1500-80c4-b779-f1e5791e1257/{Name}", FileAccess.Read)] Stream input)
+            [Blob("rawvideos/{AssetName}", FileAccess.Read)]
+            Stream input)
         {
             CloudMediaContext context = new CloudMediaContext(MediaServicesCredentials.Value);
 
-            string file = CopyFileLocaly(input, videoInfo.Name);
+            //string file = CopyFileLocaly(input, videoInfo.Name);
+            string file = CopyFileLocaly(input, videoInfo.AssetName);
 
             //string mediaId = await UploadVideo(context, videoInfo.Name, videoInfo.Uri.ToString());
             IAsset mediaAsset = await UploadVideo(context, Path.GetFileName(file), file);
@@ -39,8 +42,23 @@ namespace VideoConverter
             await job.GetExecutionProgressTask(CancellationToken.None);
             using (WeCanHelpContext dataContext = new WeCanHelpContext())
             {
-                Asset asset = dataContext.Assets.First(a => a.Id.Equals(videoInfo.AssetId));
-                //asset.
+                try
+                {
+                    Asset asset = dataContext.Assets.First(a => a.Id.Equals(videoInfo.AssetId));
+                    asset.RawUrl = string.Concat("http://wchhackmedia.streaming.mediaservices.windows.net/1e6588c7-0dab-40c7-8cf3-1db199a9b6ca/",
+                        videoInfo.AssetName);
+                    asset.Published = string.Concat("http://wchhackmedia.streaming.mediaservices.windows.net/1e6588c7-0dab-40c7-8cf3-1db199a9b6ca/",
+                        Path.GetFileNameWithoutExtension(videoInfo.AssetName),
+                        ".ism/Manifest");
+                    dataContext.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    if (!string.IsNullOrEmpty(ex.Message))
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
             }
         }
 
