@@ -7,6 +7,9 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="We Can Help" />
   <Description DefaultValue="Help colaboration tool"/>
+  <AppDomains>
+    <AppDomain>https://login.microsoftonline.com/</AppDomain>
+  </AppDomains>
   <Hosts>
     <Host Name="Workbook" />
     <Host Name="Presentation" />
