@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeCanHelpOfficeAppWeb", "We
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeCanHelpOfficeApp", "WeCanHelpOfficeApp\WeCanHelpOfficeApp.csproj", "{E8ABEB17-77D8-4CEB-8A22-9F4C871B8959}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{B7FADFD9-45DB-42F0-8036-4DB942E9F177}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{E8ABEB17-77D8-4CEB-8A22-9F4C871B8959}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8ABEB17-77D8-4CEB-8A22-9F4C871B8959}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E8ABEB17-77D8-4CEB-8A22-9F4C871B8959}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B7FADFD9-45DB-42F0-8036-4DB942E9F177}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7FADFD9-45DB-42F0-8036-4DB942E9F177}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7FADFD9-45DB-42F0-8036-4DB942E9F177}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7FADFD9-45DB-42F0-8036-4DB942E9F177}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

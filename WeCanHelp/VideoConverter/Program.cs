@@ -26,7 +26,7 @@ namespace VideoConverter
 
             queue.CreateIfNotExists();
 
-            VideoInformation videoInformation=new VideoInformation();
+            VideoInformation videoInformation = new VideoInformation();
             videoInformation.Uri = new Uri("https://wchhack.blob.core.windows.net/asset-9320445d-1500-80c4-b779-f1e5791e1257/WP_20150422_19_37_17_Pro.mp4");
             videoInformation.Id = Guid.NewGuid();
 
