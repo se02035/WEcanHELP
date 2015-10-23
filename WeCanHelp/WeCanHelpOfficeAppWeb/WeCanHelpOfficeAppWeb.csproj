@@ -67,6 +67,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\adal-angular.js" />
+    <Content Include="App\adal.js" />
     <Content Include="App\Home\app.module.js" />
     <Content Include="App\Home\Main.js" />
     <Content Include="packages.config" />

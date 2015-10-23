@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var filesTemp = Model.OneDriveFiles;
 }
 
 <h2>Create</h2>
@@ -14,37 +15,37 @@
 
     <div class="form-horizontal">
         <h4>Asset</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <hr/>
+        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
         <div class="form-group">
-            @Html.LabelFor(model => model.Asset.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Asset.Name, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Asset.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Asset.Name, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Asset.Name, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Asset.Name, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Asset.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Asset.Description, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Asset.Description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Asset.Description, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Asset.Description, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Asset.Description, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Asset.Application, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Asset.Application, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.Asset.Application.Id, new SelectList(Model.Applications, "Id", "Name"))
-                @Html.ValidationMessageFor(model => model.Applications, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Applications, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Asset.RawUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Asset.RawUrl, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Asset.RawUrl, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Asset.RawUrl, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Asset.RawUrl, new {htmlAttributes = new {@id="inputRawUrl", @class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Asset.RawUrl, "", new {@class = "text-danger"})
             </div>
         </div>
 
@@ -57,20 +58,47 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Asset.Tag, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Asset.Tag, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Asset.Tag, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Asset.Tag, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Asset.Tag, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Asset.Tag, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default"/>
             </div>
         </div>
     </div>
+
+<table class="table">
+    <tr>
+        <th>Upload</th>
+        <th>Name</th>
+        <th>WebUrl</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.OneDriveFiles)
+    {
+        <tr>
+            <td>
+                @Html.CheckBoxFor(modelItem => item.IsSelected, new {@onclick= @String.Format("javascript:document.getElementById('inputRawUrl').value = '{0}'", @item.SourceId)})
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WebUrl)
+            </td>
+        </tr>
+    }
+
+</table>
 }
+
+
 
 <div>
     @Html.ActionLink("Back to List", "Index")
