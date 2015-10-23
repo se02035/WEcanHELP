@@ -24,7 +24,7 @@ namespace VideoConverter
             });
 
         public static async void ProcessQueueMessage(
-            [QueueTrigger("videoQueue")] VideoInformation videoInfo,
+            [QueueTrigger("videoqueue")] VideoInformation videoInfo,
             [Blob("videos/{Name}", FileAccess.Read)] Stream input)
         {
             CancellationToken cancellationToken = new CancellationToken();
