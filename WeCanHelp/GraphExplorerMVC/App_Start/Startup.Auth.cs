@@ -27,7 +27,8 @@ namespace GraphExplorerMVC
         public static readonly string Authority = aadInstance + tenantId;
 
         // This is the resource ID of the AAD Graph API.  We'll need this to request a token to call the Graph API.
-        string graphResourceId = "https://graph.windows.net";
+        //private string graphResourceId = "https://graph.windows.net";
+        private string graphResourceId = "https://api.office.com/discovery/";
 
         public void ConfigureAuth(IAppBuilder app)
         {

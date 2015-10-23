@@ -13,7 +13,7 @@ namespace GraphExplorerMVC.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201510231541081_Initial"; }
+            get { return "201510232035206_Initial"; }
         }
         
         string IMigrationMetadata.Source

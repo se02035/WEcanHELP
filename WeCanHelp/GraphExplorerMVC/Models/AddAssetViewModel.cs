@@ -10,5 +10,7 @@ namespace GraphExplorerMVC.Models
     {
         public virtual ICollection<Application> Applications { get; set; }
         public virtual Asset Asset { get; set; }
+        
+        public virtual ICollection<OneDriveFile> OneDriveFiles { get; set; } 
     }
 }
