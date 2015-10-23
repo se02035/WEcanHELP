@@ -2,10 +2,10 @@
 using System.Configuration;
 using System.IO;
 using System.Linq;
-using System.Security.AccessControl;
 using System.Threading;
 using System.Threading.Tasks;
 using Common;
+using DataLayer;
 using Microsoft.Azure.WebJobs;
 using Microsoft.WindowsAzure.MediaServices.Client;
 
@@ -37,6 +37,11 @@ namespace VideoConverter
 
             IJob job = await CreateMediaEncodeJob(context, mediaAsset);
             await job.GetExecutionProgressTask(CancellationToken.None);
+            using (WeCanHelpContext dataContext = new WeCanHelpContext())
+            {
+                Asset asset = dataContext.Assets.First(a => a.Id.Equals(videoInfo.AssetId));
+                //asset.
+            }
         }
 
         private static string CopyFileLocaly(Stream input, string name)
@@ -55,7 +60,11 @@ namespace VideoConverter
 
             IJob job = context.Jobs.Create("Encoding " + assetToEncode.Name + " to " + encodingPreset);
 
-            string[] y = context.MediaProcessors.Where(mp => mp.Name.Equals("Azure Media Encoder")).ToArray().Select(mp=>mp.Version).ToArray();
+            string[] y =
+                context.MediaProcessors.Where(mp => mp.Name.Equals("Azure Media Encoder"))
+                    .ToArray()
+                    .Select(mp => mp.Version)
+                    .ToArray();
 
             IMediaProcessor latestWameMediaProcessor =
                 context.MediaProcessors.Where(mp => mp.Name.Equals("Azure Media Encoder"))
