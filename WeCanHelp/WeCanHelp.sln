@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphExplorerMVC", "GraphExplorerMVC\GraphExplorerMVC.csproj", "{37748367-2923-46FD-B9B2-BF26C1E682BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeCanHelp.Web", "WeCanHelp.Web\WeCanHelp.Web.csproj", "{C7CF099B-62C9-4505-B83F-0DA9AF321371}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoConverter", "VideoConverter\VideoConverter.csproj", "{B1A05187-624B-445B-8AC4-86BFDDEC157E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{159E3B6A-57F8-42E7-AACB-0FFBBA809CFC}"
@@ -13,6 +17,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37748367-2923-46FD-B9B2-BF26C1E682BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37748367-2923-46FD-B9B2-BF26C1E682BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37748367-2923-46FD-B9B2-BF26C1E682BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37748367-2923-46FD-B9B2-BF26C1E682BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7CF099B-62C9-4505-B83F-0DA9AF321371}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7CF099B-62C9-4505-B83F-0DA9AF321371}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7CF099B-62C9-4505-B83F-0DA9AF321371}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7CF099B-62C9-4505-B83F-0DA9AF321371}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B1A05187-624B-445B-8AC4-86BFDDEC157E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B1A05187-624B-445B-8AC4-86BFDDEC157E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1A05187-624B-445B-8AC4-86BFDDEC157E}.Release|Any CPU.ActiveCfg = Release|Any CPU
