@@ -30,7 +30,7 @@ angularApp.controller('Main', ['$scope', '$http', '$location', 'adalAuthenticati
         $scope.testMessage = "It is not Authorized for resource:" + forResource;
     });
     
-    loadData($http);
+    //loadData($http, $scope);
 
 }]);
 
@@ -58,7 +58,7 @@ function play(e) {
     $('#videoFrame').attr('src', 'https://aka.ms/azuremediaplayeriframe?autoplay=false&url=' + encodeURIComponent(e.href));
 }
 
-function loadData($http) {
+function loadData($http, $scope) {
     $http({
         method: 'GET',
         url: 'https://wecanhelphack.azurewebsites.net/odata/Assets?$filter=Application/Id%20eq%201%20and%20Published%20ne%20null'
