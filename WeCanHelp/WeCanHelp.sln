@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphExplorerMVC", "GraphExplorerMVC\GraphExplorerMVC.csproj", "{37748367-2923-46FD-B9B2-BF26C1E682BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeCanHelp.Web", "WeCanHelp.Web\WeCanHelp.Web.csproj", "{C7CF099B-62C9-4505-B83F-0DA9AF321371}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{37748367-2923-46FD-B9B2-BF26C1E682BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37748367-2923-46FD-B9B2-BF26C1E682BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37748367-2923-46FD-B9B2-BF26C1E682BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7CF099B-62C9-4505-B83F-0DA9AF321371}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7CF099B-62C9-4505-B83F-0DA9AF321371}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7CF099B-62C9-4505-B83F-0DA9AF321371}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7CF099B-62C9-4505-B83F-0DA9AF321371}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
