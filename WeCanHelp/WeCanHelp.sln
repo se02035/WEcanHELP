@@ -7,6 +7,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphExplorerMVC", "GraphEx
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeCanHelp.Web", "WeCanHelp.Web\WeCanHelp.Web.csproj", "{C7CF099B-62C9-4505-B83F-0DA9AF321371}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoConverter", "VideoConverter\VideoConverter.csproj", "{B1A05187-624B-445B-8AC4-86BFDDEC157E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{159E3B6A-57F8-42E7-AACB-0FFBBA809CFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeCanHelpOfficeAppWeb", "WeCanHelpOfficeAppWeb\WeCanHelpOfficeAppWeb.csproj", "{A8F8D8D6-7B5B-4BCD-9432-D4144935CA02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeCanHelpOfficeApp", "WeCanHelpOfficeApp\WeCanHelpOfficeApp.csproj", "{E8ABEB17-77D8-4CEB-8A22-9F4C871B8959}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +29,29 @@ Global
 		{C7CF099B-62C9-4505-B83F-0DA9AF321371}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7CF099B-62C9-4505-B83F-0DA9AF321371}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7CF099B-62C9-4505-B83F-0DA9AF321371}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1A05187-624B-445B-8AC4-86BFDDEC157E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1A05187-624B-445B-8AC4-86BFDDEC157E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1A05187-624B-445B-8AC4-86BFDDEC157E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1A05187-624B-445B-8AC4-86BFDDEC157E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{159E3B6A-57F8-42E7-AACB-0FFBBA809CFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{159E3B6A-57F8-42E7-AACB-0FFBBA809CFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{159E3B6A-57F8-42E7-AACB-0FFBBA809CFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{159E3B6A-57F8-42E7-AACB-0FFBBA809CFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8F8D8D6-7B5B-4BCD-9432-D4144935CA02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8F8D8D6-7B5B-4BCD-9432-D4144935CA02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8F8D8D6-7B5B-4BCD-9432-D4144935CA02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8F8D8D6-7B5B-4BCD-9432-D4144935CA02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8ABEB17-77D8-4CEB-8A22-9F4C871B8959}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8ABEB17-77D8-4CEB-8A22-9F4C871B8959}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8ABEB17-77D8-4CEB-8A22-9F4C871B8959}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E8ABEB17-77D8-4CEB-8A22-9F4C871B8959}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8ABEB17-77D8-4CEB-8A22-9F4C871B8959}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8ABEB17-77D8-4CEB-8A22-9F4C871B8959}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\TransientFaultHandling.Core.5.1.1209.1\lib\NET4
 	EndGlobalSection
 EndGlobal
