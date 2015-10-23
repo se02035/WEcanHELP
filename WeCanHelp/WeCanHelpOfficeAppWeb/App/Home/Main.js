@@ -30,7 +30,7 @@ angularApp.controller('Main', ['$scope', '$http', '$location', 'adalAuthenticati
         $scope.testMessage = "It is not Authorized for resource:" + forResource;
     });
     
-    
+    loadData($http);
 
 }]);
 
@@ -61,7 +61,7 @@ function play(e) {
 function loadData($http) {
     $http({
         method: 'GET',
-        url: 'http://localhost:30883/odata/Assets?$filter=Application/Id%20eq%201%20and%20Published%20ne%20null'
+        url: 'https://wecanhelphack.azurewebsites.net/odata/Assets?$filter=Application/Id%20eq%201%20and%20Published%20ne%20null'
     }).then(function successCallback(response) {
         // this callback will be called asynchronously
         // when the response is available
