@@ -24,14 +24,13 @@ namespace VideoConverter
             });
 
         public static async void ProcessQueueMessage(
-            [QueueTrigger("videoQueue")] VideoInformation videoInfo,
+            [QueueTrigger("videoqueue")] VideoInformation videoInfo,
             [Blob("videos/{Name}", FileAccess.Read)] Stream input)
         {
-            CancellationToken cancellationToken = new CancellationToken();
             CloudMediaContext context = new CloudMediaContext(MediaServicesCredentials.Value);
 
-            string mediaId = await UploadVideo(context, videoInfo.Name, videoInfo.Uri.ToString(), cancellationToken);
-                
+            string mediaId = await UploadVideo(context, videoInfo.Name, videoInfo.Uri.ToString());
+
             IJob job = await CreateMediaEncodeJob(context, mediaId);
             await job.GetExecutionProgressTask(CancellationToken.None);
         }
@@ -60,19 +59,27 @@ namespace VideoConverter
             return await job.SubmitAsync();
         }
 
-        public static async Task<string> UploadVideo(CloudMediaContext context, string name, string address,
-            CancellationToken cancellationToken)
+        public static async Task<string> UploadVideo(CloudMediaContext context, string name, string address)
         {
             IAsset uploadAsset =
                 await
                     context.Assets.CreateAsync(Path.GetFileNameWithoutExtension(name), AssetCreationOptions.None,
-                        cancellationToken);
-            IAssetFile assetFile = await uploadAsset.AssetFiles.CreateAsync(name, cancellationToken);
-            BlobTransferClient client = new BlobTransferClient();
-            IAccessPolicy accessPolicy = context.AccessPolicies.Create("Write", TimeSpan.FromMinutes(5),
+                        CancellationToken.None);
+            IAssetFile assetFile = await uploadAsset.AssetFiles.CreateAsync(name, CancellationToken.None);
+
+            IAccessPolicy accessPolicy = context.AccessPolicies.Create(uploadAsset.Name, TimeSpan.FromMinutes(5),
                 AccessPermissions.Write);
             ILocator locator = context.Locators.CreateSasLocator(uploadAsset, accessPolicy);
-            await assetFile.UploadAsync(address, client, locator, cancellationToken);
+            BlobTransferClient client = new BlobTransferClient()
+            {
+                NumberOfConcurrentTransfers = 5,
+                ParallelTransferThreadCount = 5
+            };
+            await assetFile.UploadAsync(address, client, locator, CancellationToken.None);
+
+            locator.Delete();
+            accessPolicy.Delete();
+
             return uploadAsset.Id;
         }
     }
