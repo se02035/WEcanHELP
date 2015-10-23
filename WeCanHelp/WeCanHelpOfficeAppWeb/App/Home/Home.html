@@ -40,11 +40,7 @@
 
 <div id="content-main">
 
-    <ul class="nav navbar-nav navbar-right">
-        <!--<li ng-show="userInfo.isAuthenticated" ><a class="btn btn-link" ng-click="logout()">Logout</a></li>-->
-        <li ng-hide="userInfo.isAuthenticated"><a class="btn btn-link" ng-click="login()">Login</a></li>
-    </ul>
-
+    
     <div class="padding">
         <p><strong>Select what you want help with and click button</strong>
         </p>
@@ -68,6 +64,7 @@
         <h3>
             Id_token content
         </h3>
+        <p><a ng-hide="userInfo.isAuthenticated" class="btn btn-link" ng-click="login()">Login</a></p>
         <p>userName: {{userInfo.userName}}</p>
         <p>unique_name:{{userInfo.profile.unique_name}}</p>
         <p>family_name:{{userInfo.profile.family_name}}</p>
