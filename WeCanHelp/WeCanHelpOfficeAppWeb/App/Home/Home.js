@@ -21,7 +21,8 @@
                     var elem = angular.element(document.querySelector('[ng-app]'));
                     var injector = elem.injector();
                     var $http = injector.get('$http');
-                    loadData($http);
+                    var $scope = injector.get('$rootScope');
+                    loadData($http, $scope);
                 } else {
                     app.showNotification('Error:', result.error.message);
                 }

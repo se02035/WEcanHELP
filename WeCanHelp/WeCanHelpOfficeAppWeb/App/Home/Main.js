@@ -17,6 +17,7 @@ angularApp.controller('Main', ['$scope', '$http', '$location', 'adalAuthenticati
     // optional
     $scope.$on("adal:loginSuccess", function () {
         //$scope.testMessage = "loginSuccess";
+        loadData($http, $scope);
     });
 
     // optional
@@ -25,12 +26,12 @@ angularApp.controller('Main', ['$scope', '$http', '$location', 'adalAuthenticati
         //$location.path("/login");
     });
 
-    // optional
-    $scope.$on("adal:notAuthorized", function (event, rejection, forResource) {
-        $scope.testMessage = "It is not Authorized for resource:" + forResource;
-    });
+    //// optional
+    //$scope.$on("adal:notAuthorized", function (event, rejection, forResource) {
+    //    $scope.testMessage = "It is not Authorized for resource:" + forResource;
+    //});
     
-    
+    //loadData($http, $scope);
 
 }]);
 
@@ -58,10 +59,10 @@ function play(e) {
     $('#videoFrame').attr('src', 'https://aka.ms/azuremediaplayeriframe?autoplay=false&url=' + encodeURIComponent(e.href));
 }
 
-function loadData($http) {
+function loadData($http, $scope) {
     $http({
         method: 'GET',
-        url: 'http://localhost:30883/odata/Assets?$filter=Application/Id%20eq%201%20and%20Published%20ne%20null'
+        url: 'https://wecanhelphack.azurewebsites.net/odata/Assets?$filter=Application/Id%20eq%201%20and%20Published%20ne%20null'
     }).then(function successCallback(response) {
         // this callback will be called asynchronously
         // when the response is available
@@ -69,6 +70,7 @@ function loadData($http) {
     }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
+        $scope.testMessage = response;
     });
 
 }
