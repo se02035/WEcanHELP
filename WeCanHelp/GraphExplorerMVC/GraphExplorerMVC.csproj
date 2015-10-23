@@ -202,13 +202,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201510230726341_Initial.cs" />
-    <Compile Include="Migrations\201510230726341_Initial.Designer.cs">
-      <DependentUpon>201510230726341_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201510230823232_AssetAdded.cs" />
-    <Compile Include="Migrations\201510230823232_AssetAdded.Designer.cs">
-      <DependentUpon>201510230823232_AssetAdded.cs</DependentUpon>
+    <Compile Include="Migrations\201510231541081_Initial.cs" />
+    <Compile Include="Migrations\201510231541081_Initial.Designer.cs">
+      <DependentUpon>201510231541081_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdalTokenCache.cs" />
@@ -286,15 +282,12 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201510230726341_Initial.resx">
-      <DependentUpon>201510230726341_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201510230823232_AssetAdded.resx">
-      <DependentUpon>201510230823232_AssetAdded.cs</DependentUpon>
-    </EmbeddedResource>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
+    <EmbeddedResource Include="Migrations\201510231541081_Initial.resx">
+      <DependentUpon>201510231541081_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
